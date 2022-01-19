@@ -1,0 +1,6 @@
+name: Cylon
+channels:
+  - cylondata
+dependencies:
+  - python=3.7
+  - pycylon

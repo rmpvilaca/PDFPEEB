@@ -1,0 +1,9 @@
+name: Sdc
+channels:
+  - conda-forge
+  - defaults
+  - intel/label/beta
+  - intel
+dependencies:
+  - python=3.8
+  - sdc
