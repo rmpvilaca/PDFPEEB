@@ -5,16 +5,16 @@ The benchmark uses the  data from the [NYC Taxi and Limousine Commission (TLC)](
 Although all frameworks can read a CSV file, a more optimized approach is to use a binary version, namely [Parquet](https://parquet.apache.org/). Therefore, in the current version of the benchmark all implementations are using Parquet to load data except (Datatable and Sdc) for each the method didn't exist/work.
 
 Current frameworks:
-* [Pandas](https://pandas.pydata.org/)
-* [Intel® Scalable Dataframe Compiler](https://github.com/IntelPython/sdc)
-* [Bodo](https://bodo.ai/). Able to run distributed using MPI.
-* [Vaex](https://github.com/vaexio/vaex)
-* [Intel Distribution of Modin](https://www.intel.com/content/www/us/en/developer/tools/oneapi/distribution-of-modin.html)
-* [Dask](https://dask.org/): Able to run distribute.
-* [Koalas](https://github.com/databricks/koalas).  Able to run distribute using Spark.
-* [Rapids](https://rapids.ai/). Able to run distributed with multiple GPUs when combined with Dask.
-* [Polars](https://github.com/pola-rs/polars)
-* [Cylon](https://cylondata.org/). Able to run distributed using MPI.
+* [Pandas](https://pandas.pydata.org/): The python data analysis library.
+* [Intel® Scalable Dataframe Compiler](https://github.com/IntelPython/sdc): Extension of [Numba](https://numba.pydata.org/) that enables compilation of Pandas* operations. It automatically vectorizes and parallelizes the code.
+* [Bodo](https://bodo.ai/): New approach to HPC-style parallel computing. Able to run distributed using MPI. Needs license.
+* [Vaex](https://github.com/vaexio/vaex:) High performance Python library for lazy Out-of-Core DataFrames.
+* [Intel Distribution of Modin](https://www.intel.com/content/www/us/en/developer/tools/oneapi/distribution-of-modin.html) A performant, parallel, and distributed dataframe system.
+* [Dask](https://dask.org/): A Dask DataFrame is a large parallel DataFrame composed of many smaller Pandas DataFrames, split along the index. These Pandas DataFrames may live on disk for larger-than-memory computing on a single machine, or on many different machines in a cluster. 
+* [Koalas](https://github.com/databricks/koalas). Implements the pandas DataFrame API on top of Apache Spark and thus able to run distributed.
+* [Rapids](https://rapids.ai/): Open GPU Data Science. Able to run distributed with multiple GPUs when combined with Dask.
+* [Polars](https://github.com/pola-rs/polars): Polars is a fast DataFrames library implemented in Rust using Apache Arrow Columnar Format as memory model.
+* [Cylon](https://cylondata.org/). Is a data engineering toolkit designed to work with AI/ML systems and integrate with data processing systems. Able to run distributed using MPI.
 
 ## Requirements
 The benchmark assumes the following packages are install:
@@ -41,9 +41,9 @@ All frameworks are loaded in a independent Conda environment apart from X that d
 
 Thus the setup script creates an environment for each framework and also downloads the NYC TLC data to local parquet folders, for different dataset sizes.
 
-{% highlight bash %}
+```bash
 setup.sh
-{% endhighlight %}
+```
 
 ## Instructions for running
 
@@ -51,23 +51,21 @@ Thus the run script uses the environments created for each framework by the setu
 
 For each dataset size and framework, the script monitors the energy consumption using PowerJoular and store all results in a CSV file, one per dataset size.
 
-{% highlight bash %}
+```bash
 run.sh
-{% endhighlight %}
+```
 
 ## Plotting results
 
 The plot script generates the graphics in PNG and PDF format, taking as input the CSV files with results, one per dataset size.
 
-{% highlight bash %}
+```bash
 plot.sh
-{% endhighlight %}
+```
 
 ## Feedback
 
-Updated source and an issue tracker are available at:
-
-        https://github.com/rmpvilaca/PDFBench
+Updated source and an issue tracker are available at [GitHub](https://github.com/rmpvilaca/PDFBench).
 
 Your feedback is welcome.
 
